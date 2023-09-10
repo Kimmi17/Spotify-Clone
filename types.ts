@@ -41,6 +41,12 @@ export interface Price {
   metadata?: Stripe.Metadata;
   products?: Product;
 }
+
+export interface Customer {
+  id: string;
+  stripe_customer_id?: string;
+}
+
 export interface ProductWithPrice extends Product {
   prices?: Price[];
 }
