@@ -1,14 +1,17 @@
 "use client";
+
 import * as RadixSlider from "@radix-ui/react-slider";
 
-interface SliderProps {
+interface SlideProps {
   value?: number;
   onChange?: (value: number) => void;
 }
-const Slider: React.FC<SliderProps> = ({ value = 1, onChange }) => {
+
+const Slider: React.FC<SlideProps> = ({ value = 1, onChange }) => {
   const handleChange = (newValue: number[]) => {
     onChange?.(newValue[0]);
   };
+
   return (
     <RadixSlider.Root
       className="
@@ -38,11 +41,11 @@ const Slider: React.FC<SliderProps> = ({ value = 1, onChange }) => {
       >
         <RadixSlider.Range
           className="
-              absolute 
-              bg-white 
-              rounded-full 
-              h-full
-            "
+            absolute 
+            bg-white 
+            rounded-full 
+            h-full
+          "
         />
       </RadixSlider.Track>
     </RadixSlider.Root>
