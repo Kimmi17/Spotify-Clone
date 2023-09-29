@@ -15,9 +15,9 @@ const relevantEvents = new Set([
   "price.created",
   "price.updated",
   "checkout.session.completed",
-  "customer.subscripton.created",
-  "customer.subscripton.updated",
-  "customer.subscripton.deleted",
+  "customer.subscription.created",
+  "customer.subscription.updated",
+  "customer.subscription.deleted",
 ]);
 
 export async function POST(request: Request) {
