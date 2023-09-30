@@ -1,20 +1,23 @@
 "use client";
 
+import useSound from "use-sound";
+import { useEffect, useState } from "react";
+import { BsPauseFill, BsPlayFill } from "react-icons/bs";
+import { HiSpeakerWave, HiSpeakerXMark } from "react-icons/hi2";
+import { AiFillStepBackward, AiFillStepForward } from "react-icons/ai";
+
 import { Song } from "@/types";
+import usePlayer from "@/hooks/usePlayer";
+
 import LikeButton from "./LikeButton";
 import MediaItem from "./MediaItem";
-import { BsPauseFill, BsPlayFill } from "react-icons/bs";
-import { AiFillStepBackward, AiFillStepForward } from "react-icons/ai";
-import { HiSpeakerWave, HiSpeakerXMark } from "react-icons/hi2";
 import Slider from "./Slider";
-import usePlayer from "@/hooks/usePlayer";
-import { useEffect, useState } from "react";
-import useSound from "use-sound";
 
 interface PlayerContentProps {
   song: Song;
   songUrl: string;
 }
+
 const PlayerContent: React.FC<PlayerContentProps> = ({ song, songUrl }) => {
   const player = usePlayer();
   const [volume, setVolume] = useState(1);
@@ -34,6 +37,7 @@ const PlayerContent: React.FC<PlayerContentProps> = ({ song, songUrl }) => {
     if (!nextSong) {
       return player.setId(player.ids[0]);
     }
+
     player.setId(nextSong);
   };
 
@@ -95,68 +99,70 @@ const PlayerContent: React.FC<PlayerContentProps> = ({ song, songUrl }) => {
           <LikeButton songId={song.id} />
         </div>
       </div>
+
       <div
         className="
-        flex 
-        md:hidden 
-        col-auto 
-        w-full 
-        justify-end 
-        items-center
-      "
+            flex 
+            md:hidden 
+            col-auto 
+            w-full 
+            justify-end 
+            items-center
+          "
       >
         <div
           onClick={handlePlay}
           className="
-          h-10
-          w-10
-          flex 
-          items-center 
-          justify-center 
-          rounded-full 
-          bg-white 
-          p-1 
-          cursor-pointer
-        "
+              h-10
+              w-10
+              flex 
+              items-center 
+              justify-center 
+              rounded-full 
+              bg-white 
+              p-1 
+              cursor-pointer
+            "
         >
           <Icon size={30} className="text-black" />
         </div>
       </div>
+
       <div
         className="
-          hidden
-          h-full
-          md:flex 
-          justify-center 
-          items-center 
-          w-full 
-          max-w-[722px] 
-          gap-x-6
-      "
+            hidden
+            h-full
+            md:flex 
+            justify-center 
+            items-center 
+            w-full 
+            max-w-[722px] 
+            gap-x-6
+          "
       >
         <AiFillStepBackward
           onClick={onPlayPrevious}
           size={30}
           className="
-            text-neutral-400 
-            cursor-pointer 
-            hover:text-white 
-            transition
-          "
+              text-neutral-400 
+              cursor-pointer 
+              hover:text-white 
+              transition
+            "
         />
         <div
           onClick={handlePlay}
           className="
-            flex 
-            items-center 
-            justify-center
-            h-10
-            w-10 
-            rounded-full 
-            bg-white 
-            p-1 
-            cursor-pointer
-          "
+              flex 
+              items-center 
+              justify-center
+              h-10
+              w-10 
+              rounded-full 
+              bg-white 
+              p-1 
+              cursor-pointer
+            "
         >
           <Icon size={30} className="text-black" />
         </div>
@@ -171,6 +177,7 @@ const PlayerContent: React.FC<PlayerContentProps> = ({ song, songUrl }) => {
             "
         />
       </div>
+
       <div className="hidden md:flex w-full justify-end pr-2">
         <div className="flex items-center gap-x-2 w-[120px]">
           <VolumeIcon
