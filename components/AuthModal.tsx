@@ -15,7 +15,7 @@ const AuthModal = () => {
   const supabaseClient = useSupabaseClient();
   const router = useRouter();
   const { session } = useSessionContext();
-  const { onClose, isOpen } = useAuthModal();
+  const { onClose, isOpen, isSignUp } = useAuthModal();
 
   useEffect(() => {
     if (session) {
@@ -37,9 +37,10 @@ const AuthModal = () => {
       onChange={onChange}
     >
       <Auth
+        view={isSignUp ? "sign_up" : "sign_in"}
         theme="dark"
         providers={["github"]}
-        magicLink
+        magicLink={false}
         supabaseClient={supabaseClient}
         appearance={{
           theme: ThemeSupa,
